@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nós</title>
+    <style>
+        body {
+            background-color: #444347;
+            color: white;
+            margin: 0;
+        }
+
+        .video {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 130px;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end; /* Ajustando o alinhamento */
+            align-items: center;
+            background-color: #333;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+            color: white;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s; /* Adicionando uma transição de cor de 0.3 segundos */
+        }
+
+        nav ul li a:hover {
+            color: red; /* Mudando a cor do texto quando passa o mouse */
+        }
+
+        .typing {
+            overflow: hidden; /* Esconder o overflow para criar o efeito de datilografia */
+            border-right: .15em solid black; /* Adicionar uma borda à direita para simular o cursor */
+            white-space: normal; /* Permitir que o texto quebre para a próxima linha */
+            margin-right: 20px; /* Espaço entre os parágrafos */
+            max-width: 300px; /* Largura máxima do texto */
+        }
+
+        /* Animação de datilografia */
+        @keyframes typing {
+            from {
+                width: 0; /* Iniciar com largura 0 para simular texto sendo digitado */
+            }
+            to {
+                width: auto; /* Aumentar a largura até que o texto esteja totalmente visível */
+            }
+        }
+
+        .typing::after {
+            content: ''; /* Adicionar um elemento de pseudo-classe ::after para simular o cursor */
+            display: inline-block;
+            width: 0; /* Começar com largura 0 */
+            vertical-align: bottom;
+            animation: typing 3s steps(30, end) infinite; /* Definir a animação */
+        }
+
+        .texto-container {
+            display: flex;
+            align-items: center; /* Alinhar os itens ao centro */
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%; /* Ocupar toda a largura disponível */
+        }
+
+        .texto {
+            display: flex;
+            flex-direction: column; /* Exibir os blocos de texto verticalmente */
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px; /* Espaçamento entre os parágrafos */
+            border-left: 1px solid black; /* Adiciona uma linha vertical à esquerda */
+            border-right: 1px solid black; /* Adiciona uma linha vertical à direita */
+            padding: 0 10px; /* Adiciona um espaçamento interno */
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <header>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </header>
+    </nav>
+    
+    <div class="video">
+        <video width="640" height="360" controls>
+            <source src="videoplayback.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="texto-container">
+        <div class="texto">
+            <div id="paragrafo1" class="typing">OLA mundo como estamos</div>
+            
+        </div>
+    </div>
+    
+</body>
+<script>
+
+document.addEventListener('DOMContentLoaded', function(){
+    var elements = document.querySelectorAll('.typing');
+    elements.forEach(function(elem) {
+        var text = elem.innerHTML;
+        elem.innerHTML = '';
+        var span = document.createElement('span');
+        elem.appendChild(span);
+        var i = 0;
+        var timer = setInterval(function() {
+            span.textContent += text[i];
+            i++;
+            if (i > text.length - 1) {
+                clearInterval(timer);
+            }
+        }, 100); // Velocidade da datilografia (em milissegundos)
+    });
+});
+
+</script>
+</html>

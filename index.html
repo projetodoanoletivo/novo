@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Navbar</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #444347;
+        }
+        
+        header {
+            background-color: #333;
+            padding: 50px 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: right; /* Alinhamento à direita */
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-left: 20px; /* Espaçamento entre os itens do menu */
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            position: relative; /* Posição relativa para animação */
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease-in-out;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%; /* Largura completa ao passar o mouse */
+        }
+        
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 150px; /* Aumentei a margem superior para mover as caixas mais para baixo */
+        }
+        
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #03065b;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 200px;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .box:hover {
+            transform: scale(1.1);
+        }
+        
+        .box:nth-child(1) {
+            background-image: url('imagem.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .box:nth-child(2) {
+            background-image: url('imagem (2).png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .box:nth-child(3) {
+            background-image: url('imagem (1).png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .box:nth-child(4) {
+            background-image: url('imagem (3).png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .botao:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+ 
+    <main>
+        <div class="main">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </main>
+</body>
+</html>
