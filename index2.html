@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var timer = setInterval(function() {
             span.textContent += text[i];
             i++;
+            elem.scrollTop = elem.scrollHeight; // Ajusta o scroll conforme o texto é digitado
             if (i > text.length - 1) {
                 clearInterval(timer);
             }
@@ -158,3 +159,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 </html>
+
