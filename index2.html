@@ -22,7 +22,7 @@
             display: flex;
             justify-content: flex-end; /* Ajustando o alinhamento */
             align-items: center;
-            background-color:  #363537;
+            background-color: #363537;
             padding: 20px 0;
         }
 
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var timer = setInterval(function() {
             span.textContent += text[i];
             i++;
-            elem.scrollTop = elem.scrollHeight; // Ajusta o scroll conforme o texto é digitado
+            window.scrollTo(0, document.body.scrollHeight); // Ajusta o scroll conforme o texto é digitado
             if (i > text.length - 1) {
                 clearInterval(timer);
             }
@@ -142,4 +142,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 </html>
+                                                                                                                                                                                                                                                                
 
