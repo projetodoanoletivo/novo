@@ -61,7 +61,6 @@
         .box {
             width: 200px;
             height: 200px;
-            background-color: #03065b;
             color: white;
             text-decoration: none;
             font-size: 16px;
@@ -106,8 +105,8 @@
             background-size: cover;
         }
         
-        .botao:hover {
-            background-color: #0056b3;
+        a.box {
+            display: block;
         }
     </style>
 </head>
@@ -124,11 +123,11 @@
     </header>
  
     <main>
-     <div class="main">
-            <div class="box"><a href="https://projetodoanoletivo.github.io/novo/">Link 1</a></div>
-            <div class="box"><a href="https://projetodoanoletivo.github.io/novo/index2.html">Link 2</a></div>
-            <div class="box"><a href="https://example.com/link3">Link 3</a></div>
-            <div class="box"><a href=https://projetodoanoletivo.github.io/novo/index3.html">Link 4</a></div>
+        <div class="main">
+            <a href="https://projetodoanoletivo.github.io/novo/" class="box"></a>
+            <a href="https://projetodoanoletivo.github.io/novo/index2.html" class="box"></a>
+            <a href="https://example.com/link3" class="box"></a>
+            <a href="https://projetodoanoletivo.github.io/novo/index3.html" class="box"></a>
         </div>
     </main>
 </body>
