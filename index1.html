@@ -9,32 +9,7 @@
             background-color: #444347;
             color: white;
             margin: 0;
-        }
-        header {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            background-color: #363537;
-            padding: 20px 0;
-        }
-        nav ul {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            list-style-type: none;
-            padding: 0;
-        }
-        nav ul li {
-            margin-right: 20px;
-            color: white;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: red;
+            font-family: Arial, sans-serif;
         }
         .container {
             background: #fff;
@@ -49,9 +24,6 @@
             text-align: center;
             color: #333;
         }
-        #news-container {
-            margin-top: 20px;
-        }
         .news-item {
             border-bottom: 1px solid #ddd;
             padding: 10px 0;
@@ -62,82 +34,62 @@
         .news-title {
             font-size: 1.2em;
             color: #007BFF;
+            margin-bottom: 5px;
         }
         .news-description {
-            margin-top: 5px;
             color: #555;
         }
     </style>
 </head>
 <body>
-<nav>
-    <header>
-        <ul>
-            <li><a href="#home">Início</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-    </header>
-</nav>
 <div class="container">
     <h1>Notícias de Criminalidade em Sorocaba</h1>
     <div id="news-container"></div>
 </div>
 <script>
-    async function fetchNews() {
-        const apiKey = '09233569fa214d92a7d808a16f5aafd1'; // Substitua por sua chave de API
-        const today = new Date();
-        const fromDate = new Date(today.setDate(today.getDate() - 3)).toISOString();
-        const url = `https://newsapi.org/v2/everything?q=tesla&from=2024-04-24&sortBy=publishedAt&apiKey=09233569fa214d92a7d808a16f5aafd1
-`;
-
+    // Função para buscar notícias do servidor em tempo real
+    async function fetchRealTimeNews() {
         try {
-            const response = await fetch(url);
+            const response = await fetch('https://g1.globo.com/sp/sorocaba-jundiai/');
             const data = await response.json();
-            displayNews(data.articles);
+            return data;
         } catch (error) {
             console.error('Erro ao buscar notícias:', error);
+            return []; // Retorna uma matriz vazia em caso de erro
         }
     }
 
-    function displayNews(articles) {
+    // Função para exibir notícias em tempo real
+    async function displayRealTimeNews() {
         const newsContainer = document.getElementById('news-container');
         newsContainer.innerHTML = '';
 
-        // Verificar se há artigos para exibir
-        if (articles && articles.length > 0) {
-            articles.forEach(article => {
-                const newsItem = document.createElement('div');
-                newsItem.classList.add('news-item');
+        const news = await fetchRealTimeNews();
+        news.forEach(article => {
+            const newsItem = document.createElement('div');
+            newsItem.classList.add('news-item');
 
-                const newsTitle = document.createElement('a');
-                newsTitle.classList.add('news-title');
-                newsTitle.href = article.url;
-                newsTitle.target = '_blank';
-                newsTitle.textContent = article.title;
+            const newsTitle = document.createElement('div');
+            newsTitle.classList.add('news-title');
+            newsTitle.textContent = article.title;
 
-                const newsDescription = document.createElement('p');
-                newsDescription.classList.add('news-description');
-                newsDescription.textContent = article.description;
+            const newsDescription = document.createElement('div');
+            newsDescription.classList.add('news-description');
+            newsDescription.textContent = article.description;
 
-                newsItem.appendChild(newsTitle);
-                newsItem.appendChild(newsDescription);
-                newsContainer.appendChild(newsItem);
-            });
-        } else {
-            const noNewsMessage = document.createElement('p');
-            noNewsMessage.textContent = 'Nenhuma notícia encontrada.';
-            newsContainer.appendChild(noNewsMessage);
-        }
+            newsItem.appendChild(newsTitle);
+            newsItem.appendChild(newsDescription);
+            newsContainer.appendChild(newsItem);
+        });
     }
 
-    function updateNewsPeriodically() {
-        fetchNews();
-        setInterval(fetchNews, 60000); // Atualiza a cada 60 segundos
-    }
-
-    document.addEventListener('DOMContentLoaded', updateNewsPeriodically);
+    // Exibe notícias em tempo real ao carregar a página
+    document.addEventListener('DOMContentLoaded', function() {
+        displayRealTimeNews();
+        setInterval(displayRealTimeNews, 60000); // Atualiza a cada 60 segundos
+    });
 </script>
 </body>
+</html>
+
 </html>
