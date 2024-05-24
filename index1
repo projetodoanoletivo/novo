@@ -43,6 +43,54 @@
     nav ul li a:hover {
         color: red;
     }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#news-container {
+    margin-top: 20px;
+}
+
+.news-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-title {
+    font-size: 1.2em;
+    color: #007BFF;
+}
+
+.news-description {
+    margin-top: 5px;
+    color: #555;
+}
+
 </style>
 </head>
 
@@ -57,4 +105,51 @@
         </ul>
     </header>
 </nav>
-</html>l
+
+<div class="container">
+        <h1>Notícias de Criminalidade em Sorocaba</h1>
+        <div id="news-container"></div>
+    </div>
+    <script async function fetchNews() {
+    try {
+        const response = await fetch('https://newsapi.org/v2/everything?q=criminalidade+Sorocaba&apiKey=YOUR_API_KEY');
+        const data = await response.json();
+        displayNews(data.articles);
+    } catch (error) {
+        console.error('Erro ao buscar notícias:', error);
+    }
+}
+
+function displayNews(articles) {
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = '';
+
+    articles.forEach(article => {
+        const newsItem = document.createElement('div');
+        newsItem.classList.add('news-item');
+
+        const newsTitle = document.createElement('a');
+        newsTitle.classList.add('news-title');
+        newsTitle.href = article.url;
+        newsTitle.target = '_blank';
+        newsTitle.textContent = article.title;
+
+        const newsDescription = document.createElement('p');
+        newsDescription.classList.add('news-description');
+        newsDescription.textContent = article.description;
+
+        newsItem.appendChild(newsTitle);
+        newsItem.appendChild(newsDescription);
+
+        newsContainer.appendChild(newsItem);
+    });
+}
+
+function updateNewsPeriodically() {
+    fetchNews();
+    setInterval(fetchNews, 60000); // Atualiza a cada 60 segundos
+}
+
+document.addEventListener('DOMContentLoaded', updateNewsPeriodically);
+</script>
+</html>
