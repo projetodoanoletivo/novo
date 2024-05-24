@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        background-color: #444347;
+        color: white;
+        margin: 0;
+    }
+
+    header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: #363537;
+        padding: 20px 0;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin-right: 20px;
+        color: white;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: red;
+    }
+</style>
+</head>
+
+<body>
+<nav>
+    <header>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </header>
+</nav>
+</html>l
