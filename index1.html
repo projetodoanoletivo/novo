@@ -84,45 +84,51 @@
     <h1>Notícias de Criminalidade em Sorocaba</h1>
     <div id="news-container"></div>
 </div>
-<script>
-    async function fetchNews() {
-        const apiKey = '09233569fa214d92a7d808a16f5aafd1';
-        const url = `https://newsapi.org/v2/everything?q=criminalidade+Sorocaba&from=${new Date(new Date().setDate(new Date().getDate()-3)).toISOString()}&sortBy=publishedAt&apiKey=${apiKey}`;
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            displayNews(data.articles);
-        } catch (error) {
-            console.error('Erro ao buscar notícias:', error);
-        }
-    }
+<script>async function fetchNews() {
+    const apiKey = '09233569fa214d92a7d808a16f5aafd1'; // Substitua por sua chave de API
+    const today = new Date();
+    const fromDate = new Date(today.setDate(today.getDate() - 3)).toISOString();
+    const url = `https://newsapi.org/v2/everything?q=criminalidade+Sorocaba&from=${fromDate}&sortBy=publishedAt&apiKey=${apiKey}`;
 
-    function displayNews(articles) {
-        const newsContainer = document.getElementById('news-container');
-        newsContainer.innerHTML = '';
-        articles.forEach(article => {
-            const newsItem = document.createElement('div');
-            newsItem.classList.add('news-item');
-            const newsTitle = document.createElement('a');
-            newsTitle.classList.add('news-title');
-            newsTitle.href = article.url;
-            newsTitle.target = '_blank';
-            newsTitle.textContent = article.title;
-            const newsDescription = document.createElement('p');
-            newsDescription.classList.add('news-description');
-            newsDescription.textContent = article.description;
-            newsItem.appendChild(newsTitle);
-            newsItem.appendChild(newsDescription);
-            newsContainer.appendChild(newsItem);
-        });
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        displayNews(data.articles);
+    } catch (error) {
+        console.error('Erro ao buscar notícias:', error);
     }
+}
 
-    function updateNewsPeriodically() {
-        fetchNews();
-        setInterval(fetchNews, 60000);
-    }
+function displayNews(articles) {
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = '';
 
-    document.addEventListener('DOMContentLoaded', updateNewsPeriodically);
+    articles.forEach(article => {
+        const newsItem = document.createElement('div');
+        newsItem.classList.add('news-item');
+
+        const newsTitle = document.createElement('a');
+        newsTitle.classList.add('news-title');
+        newsTitle.href = article.url;
+        newsTitle.target = '_blank';
+        newsTitle.textContent = article.title;
+
+        const newsDescription = document.createElement('p');
+        newsDescription.classList.add('news-description');
+        newsDescription.textContent = article.description;
+
+        newsItem.appendChild(newsTitle);
+        newsItem.appendChild(newsDescription);
+        newsContainer.appendChild(newsItem);
+    });
+}
+
+function updateNewsPeriodically() {
+    fetchNews();
+    setInterval(fetchNews, 60000); // Atualiza a cada 60 segundos
+}
+
+document.addEventListener('DOMContentLoaded', updateNewsPeriodically);
 </script>
 </body>
 </html>
