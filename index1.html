@@ -88,7 +88,7 @@
     const apiKey = '09233569fa214d92a7d808a16f5aafd1'; // Substitua por sua chave de API
     const today = new Date();
     const fromDate = new Date(today.setDate(today.getDate() - 3)).toISOString();
-    const url = `https://newsapi.org/v2/everything?q=criminalidade+Sorocaba&from=from=2022-05-08&to=2024-05-24&sortBy=publishedAt&apiKey=09233569fa214d92a7d808a16f5aafd1}`;
+    const url = `https://newsapi.org/v2/everything?q=criminalidade+Sorocaba&from=2022-05-08&to=2024-05-24&sortBy=publishedAt&apiKey=09233569fa214d92a7d808a16f5aafd1`;
 
     try {
         const response = await fetch(url);
