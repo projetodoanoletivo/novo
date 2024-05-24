@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        body {
+            background-color: #444347;
+            color: white;
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: #363537;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+            color: white;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <header>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </header>
+    </nav>
+
+    <h1>Formulário Criminalidade</h1>
+
+    <form>
+        <label for="nome">Nome Completo:</label><br>
+        <input type="text" id="nome" name="nome" size="45" maxlength="45"><br>
+
+        <label for="sex">Sexo:</label><br>
+        <input type="radio" name="sexo" value="Masculino">Masculino<br>
+        <input type="radio" name="sexo" value="Feminino">Feminino<br>
+        <input type="radio" name="sexo" value="Não-Binário">Não-Binário<br>
+
+        <label for="race">Raça:</label><br>
+        <input type="radio" name="raca" value="Branco">Branco<br>
+        <input type="radio" name="raca" value="Preto">Preto<br>
+        <input type="radio" name="raca" value="Pardo">Pardo<br>
+        <input type="radio" name="raca" value="índigena">índigena<br>
+        <input type="radio" name="raca" value="Amarelo">Amarelo<br>
+
+        <label for="age">Idade:</label><br>
+        <input type="number" id="age" name="age" min="1"><br>
+
+        <label for="local">De Onde Você é?</label><br>
+        <input list="browsers">
+        <datalist id="browsers">
+            <option value="Sorocaba Zona Norte">
+            <option value="Sorocaba Zona Sul">
+            <option value="Sorocaba Zona Leste">
+            <option value="Sorocaba Zona Oeste">
+            <option value="Sorocaba Centro">
+            <option value="Araçoiaba da Serra">
+            <option value="Alumínio">
+            <option value="Salto">
+            <option value="Salto de Pirapora">
+            <option value="Tatuí">
+            <option value="Boituva">
+            <option value="Itu">
+            <option value="Votorantim">
+            <option value="Porto Feliz">
+        </datalist><br>
+
+        <div>
+            <label for="quest">Qual Série Você Pertence?</label><br>
+            <input type="radio" id="quest" name="serie" value="1° Ano A">1° Ano A<br>
+            <input type="radio" id="quest" name="serie" value="1° Ano B">1° Ano B<br>
+            <input type="radio" id="quest" name="serie" value="2° Ano A">2° Ano A<br>
+            <input type="radio" id="quest" name="serie" value="2° Ano B">2° Ano B<br>
+            <input type="radio" id="quest" name="serie" value="3° Ano A">3° Ano A<br>
+            <input type="radio" id="quest" name="serie" value="3° Ano B">3° Ano B<br>
+        </div>
+
+        <label for="quest">Você tem conhecimento sobre Criminalidade?</label><br>
+        <input type="radio" id="quest" name="conhecimento" value="Sim">Tenho Conhecimento sobre o assunto.<br>
+        <input type="radio" id="quest" name="conhecimento" value="Talvez">Talvez<br>
+        <input type="radio" id="quest" name="conhecimento" value="Não">Não tenho conhecimento nenhum sobre o assunto.<br>
+
+        <label for="quest2">Você já foi vítima de um crime?</label><br>
+        <input type="radio" id="quest2" name="vitima" value="Sim">Sim<br>
+        <input type="radio" id="quest2" name="vitima" value="Não">Não<br>
+
+        <label for="quest3">Você já foi testemunha de um crime?</label><br>
+        <input type="radio" id="quest3" name="testemunha" value="Sim">Sim<br>
+        <input type="radio" id="quest3" name="testemunha" value="Não">Não<br>
+
+        <label for="quest4">Quais tipos de crimes você acredita serem mais comuns em sua área?</label><br>
+        <textarea name="crimes_comuns" id="quest4" cols="50" rows="10"></textarea><br>
+
+        <label for="quest5">Quais tipos de crimes você acha que são menos comuns, mas ainda preocupantes?</label><br>
+        <textarea name="crimes_preocupantes" id="quest5" cols="50" rows="5"></textarea><br>
+
+        <label for="quest6">O que você acha que pode ser feito para prevenir crimes em sua comunidade?</label><br>
+        <textarea name="prevencao" id="quest6" cols="50" rows="8"></textarea><br>
+
+        <label for="quest7">Que tipo de apoio ou recursos você gostaria que estivessem disponíveis para vítimas de crimes?</label><br>
+        <textarea name="apoio" id="quest7" cols="50" rows="9"></textarea><br>
+
+        <label for="quest8">Você confia na polícia/local autoridades para resolver crimes?</label><br>
+        <input type="radio" id="quest8" name="confia_policia" value="Sim">Sim<br>
+        <input type="radio" id="quest8" name="confia_policia" value="Não">Não<br>
+
+        <input type="button" onclick="validate()" value="Enviar">
+    </form>
+
+</body>
+
+</html>
