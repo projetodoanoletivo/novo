@@ -125,5 +125,43 @@
         <label for="quest7">Que tipo de apoio ou recursos você gostaria que estivessem disponíveis para vítimas de crimes?</label><br>
         <textarea name="apoio" id="quest7" cols="50" rows="9"></textarea><br>
 
-        <label for="quest8">Você confia
+        <label for="quest8">Você confia na polícia/local autoridades para resolver crimes?</label><br>
+        <input type="radio" id="quest8" name="confia_policia" value="Sim">Sim<br>
+        <input type="radio" id="quest8" name="confia_policia" value="Não">Não<br>
+
+        <input type="button" onclick="validate()" value="Enviar">
+    </form>
+
+    <script>
+        function validate() {
+            const form = document.getElementById('crimeForm');
+            const data = {};
+
+            Array.from(form.elements).forEach(element => {
+                if (element.name) {
+                    if (element.type === 'radio' && !element.checked) {
+                        return;
+                    }
+                    data[element.name] = element.value;
+                }
+            });
+
+            fetch('https://seu-nome-do-app.herokuapp.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
 
