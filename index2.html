@@ -52,6 +52,9 @@
             align-items: center;
             margin-top: 130px;
             transition: transform 0.3s, width 0.3s, height 0.3s;
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
 
         .typing {
@@ -148,12 +151,7 @@
             var maxScroll = 300; // Ponto em que o vídeo atinge seu tamanho mínimo
 
             var scale = Math.max(0.5, 1 - scrollPos / maxScroll); // Ajuste de escala
-            var width = 100 * scale + '%'; // Ajuste de largura
-            var height = 50 * scale + '%'; // Ajuste de altura
-
             videoContainer.style.transform = `scale(${scale})`;
-            video.style.width = width;
-            video.style.height = height;
         });
     });
 </script>
