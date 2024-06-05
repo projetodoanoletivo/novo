@@ -1,4 +1,4 @@
-s<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,27 +50,20 @@ s<!DOCTYPE html>
     <div id="news-container"></div>
 </div>
 <script>
-    // Função fictícia para buscar notícias
+    const apiKey = 'SUA_CHAVE_DE_API_AQUI'; // Substitua pela sua chave da NewsAPI
+
     async function fetchRealTimeNews() {
-        // Notícias fictícias
-        const data = [
-            {
-                title: 'Roubo a banco em Sorocaba',
-                description: 'Uma agência bancária foi assaltada na manhã de hoje...'
-            },
-            {
-                title: 'Aumento no índice de criminalidade',
-                description: 'O índice de criminalidade em Sorocaba aumentou em 20% no último mês...'
-            },
-            {
-                title: 'Operação policial prende traficantes',
-                description: 'Uma operação da polícia prendeu 15 traficantes no bairro...'
-            }
-        ];
-        return data;
+        const url = `https://newsapi.org/v2/everything?q=criminalidade+Sorocaba&apiKey=${apiKey}`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data.articles;
+        } catch (error) {
+            console.error('Erro ao buscar notícias:', error);
+            return [];
+        }
     }
 
-    // Função para exibir notícias em tempo real
     async function displayRealTimeNews() {
         const newsContainer = document.getElementById('news-container');
         newsContainer.innerHTML = '';
@@ -94,7 +87,6 @@ s<!DOCTYPE html>
         });
     }
 
-    // Exibe notícias em tempo real ao carregar a página
     document.addEventListener('DOMContentLoaded', function() {
         displayRealTimeNews();
         setInterval(displayRealTimeNews, 60000); // Atualiza a cada 60 segundos
