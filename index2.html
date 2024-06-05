@@ -11,18 +11,13 @@
             margin: 0;
         }
 
-        .video {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 130px;
+        header {
+            padding: 10px;
         }
-            header {
-                padding: 10px;
-            }
+
         header {
             display: flex;
-            justify-content: flex-end; /* Ajustando o alinhamento */
+            justify-content: flex-end;
             align-items: center;
             background-color: #363537;
             padding: 20px 0;
@@ -44,105 +39,123 @@
         nav ul li a {
             text-decoration: none;
             color: white;
-            transition: color 0.3s; /* Adicionando uma transição de cor de 0.3 segundos */
+            transition: color 0.3s;
         }
 
         nav ul li a:hover {
-            color: red; /* Mudando a cor do texto quando passa o mouse */
+            color: red;
+        }
+
+        .video {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 130px;
+            transition: transform 0.3s, width 0.3s, height 0.3s;
         }
 
         .typing {
-            overflow: hidden; /* Esconder o overflow para criar o efeito de datilografia */
-            border-right: .15em solid black; /* Adicionar uma borda à direita para simular o cursor */
-            white-space: normal; /* Permitir que o texto quebre para a próxima linha */
-            margin-right: 20px; /* Espaço entre os parágrafos */
-            max-width: 300px; /* Largura máxima do texto */
+            overflow: hidden;
+            border-right: .15em solid black;
+            white-space: normal;
+            margin-right: 20px;
+            max-width: 300px;
         }
 
-        /* Animação de datilografia */
         @keyframes typing {
             from {
-                width: 0; /* Iniciar com largura 0 para simular texto sendo digitado */
+                width: 0;
             }
             to {
-                width: auto; /* Aumentar a largura até que o texto esteja totalmente visível */
+                width: auto;
             }
         }
 
         .typing::after {
-            content: ''; /* Adicionar um elemento de pseudo-classe ::after para simular o cursor */
+            content: '';
             display: inline-block;
-            width: 0; /* Começar com largura 0 */
+            width: 0;
             vertical-align: bottom;
-            animation: typing 3s steps(30, end) infinite; /* Definir a animação */
+            animation: typing 3s steps(30, end) infinite;
         }
 
         .texto-container {
             display: flex;
-            align-items: center; /* Alinhar os itens ao centro */
+            align-items: center;
             justify-content: center;
             margin-top: 20px;
-            width: 100%; /* Ocupar toda a largura disponível */
+            width: 100%;
         }
 
         .texto {
             display: flex;
-            flex-direction: column; /* Exibir os blocos de texto verticalmente */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-left: 20px; /* Espaçamento entre os parágrafos */
-            border-left: 1px solid black; /* Adiciona uma linha vertical à esquerda */
-            padding: 0 10px; /* Adiciona um espaçamento interno */
+            margin-left: 20px;
+            border-left: 1px solid black;
+            padding: 0 10px;
         }
-
     </style>
 </head>
 <body>
-    <nav>
-        <header>
-             <ul>
-                <li><a href="https://projetodoanoletivo.github.io/novo/">Início</a></li>
-                <li><a href="https://projetodoanoletivo.github.io/novo/index2.html">Sobre</a></li>
-                <li><a href="https://projetodoanoletivo.github.io/novo/index1.html">Serviços</a></li>
-                <li><a href="https://projetodoanoletivo.github.io/novo/index3.html">Contato</a></li>
-            </ul>
-        </header>
-    </nav>
-    
-    <div class="video">
-        <video width="100%" height="50%" controls>
-            <source src="videoplayback.mp4" type="video/mp4">
-        </video>
+<nav>
+    <header>
+        <ul>
+            <li><a href="https://projetodoanoletivo.github.io/novo/">Início</a></li>
+            <li><a href="https://projetodoanoletivo.github.io/novo/index2.html">Sobre</a></li>
+            <li><a href="https://projetodoanoletivo.github.io/novo/index1.html">Serviços</a></li>
+            <li><a href="https://projetodoanoletivo.github.io/novo/index3.html">Contato</a></li>
+        </ul>
+    </header>
+</nav>
+
+<div class="video" id="video-container">
+    <video width="100%" height="50%" controls id="video">
+        <source src="videoplayback.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="texto-container">
+    <div class="texto">
+        <div id="paragrafo1" class="typing">Creator ineffabilis, qui de thesauris sapientiae tuae tres Angelorum hierarchias designasti et eas super caelum empyreum miro ordine collocasti atque universi partes elegantissime distribuisti: Tu, inquam, qui verus fons luminis et sapientiae diceris ac supereminens principium, infundere digneris super intellectus mei tenebras tuae radium claritatis, duplices, in quibus natus sum, a me removens tenebras, preccatum scilicet et ignorantiam. Tu, qui linguas infantium facis disertas, linguam meam erudias atque in labiis meis gratiam tuae benedictionis infundas. Da mihi intelligendi acumen, retinendi capacitatem, addiscendi modum et facilitatem, interpretandi subtilitatem, loquendi gratiam copiosam. Ingressum instruas, progressum dirigas, egressum compleas. Tu, qui es verus Deus et homo, qui vivis et regnas in saecula saeculorum. Amen.</div>
     </div>
-    <div class="texto-container">
-        <div class="texto">
-            <div id="paragrafo1" class="typing">Creator ineffabilis, qui de thesauris sapientiae tuae tres Angelorum hierarchias designasti et eas super caelum empyreum miro ordine collocasti atque universi partes elegantissime distribuisti: Tu, inquam, qui verus fons luminis et sapientiae diceris ac supereminens principium, infundere digneris super intellectus mei tenebras tuae radium claritatis, duplices, in quibus natus sum, a me removens tenebras, preccatum scilicet et ignorantiam. Tu, qui linguas infantium facis disertas, linguam meam erudias atque in labiis meis gratiam tuae benedictionis infundas. Da mihi intelligendi acumen, retinendi capacitatem, addiscendi modum et facilitatem, interpretandi subtilitatem, loquendi gratiam copiosam. Ingressum instruas, progressum dirigas, egressum compleas. Tu, qui es verus Deus et homo, qui vivis et regnas in saecula saeculorum. Amen.</div>
-        </div>
-    </div>
-    
-</body>
+</div>
+
 <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var elements = document.querySelectorAll('.typing');
+        elements.forEach(function(elem) {
+            var text = elem.innerHTML;
+            elem.innerHTML = '';
+            var span = document.createElement('span');
+            elem.appendChild(span);
+            var i = 0;
+            var timer = setInterval(function() {
+                span.textContent += text[i];
+                i++;
+                window.scrollTo(0, document.body.scrollHeight); // Ajusta o scroll conforme o texto é digitado
+                if (i > text.length - 1) {
+                    clearInterval(timer);
+                }
+            }, 100); // Velocidade da datilografia (em milissegundos)
+        });
 
-document.addEventListener('DOMContentLoaded', function(){
-    var elements = document.querySelectorAll('.typing');
-    elements.forEach(function(elem) {
-        var text = elem.innerHTML;
-        elem.innerHTML = '';
-        var span = document.createElement('span');
-        elem.appendChild(span);
-        var i = 0;
-        var timer = setInterval(function() {
-            span.textContent += text[i];
-            i++;
-            window.scrollTo(0, document.body.scrollHeight); // Ajusta o scroll conforme o texto é digitado
-            if (i > text.length - 1) {
-                clearInterval(timer);
-            }
-        }, 100); // Velocidade da datilografia (em milissegundos)
+        var videoContainer = document.getElementById('video-container');
+        var video = document.getElementById('video');
+
+        window.addEventListener('scroll', function() {
+            var scrollPos = window.scrollY;
+            var maxScroll = 300; // Ponto em que o vídeo atinge seu tamanho mínimo
+
+            var scale = Math.max(0.5, 1 - scrollPos / maxScroll); // Ajuste de escala
+            var width = 100 * scale + '%'; // Ajuste de largura
+            var height = 50 * scale + '%'; // Ajuste de altura
+
+            videoContainer.style.transform = `scale(${scale})`;
+            video.style.width = width;
+            video.style.height = height;
+        });
     });
-});
-
 </script>
+</body>
 </html>
-                                                                                                                                                                                                                                                                
-
