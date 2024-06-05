@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+s<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,10 +11,9 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        
-            header {
-                padding: 10px;
-            }
+        header {
+            padding: 10px;
+        }
         .container {
             background: #fff;
             padding: 20px;
@@ -51,16 +50,24 @@
     <div id="news-container"></div>
 </div>
 <script>
-    // Função para buscar notícias do servidor em tempo real
+    // Função fictícia para buscar notícias
     async function fetchRealTimeNews() {
-        try {
-            const response = await fetch('https://g1.globo.com/sp/sorocaba-jundiai/');
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Erro ao buscar notícias:', error);
-            return []; // Retorna uma matriz vazia em caso de erro
-        }
+        // Notícias fictícias
+        const data = [
+            {
+                title: 'Roubo a banco em Sorocaba',
+                description: 'Uma agência bancária foi assaltada na manhã de hoje...'
+            },
+            {
+                title: 'Aumento no índice de criminalidade',
+                description: 'O índice de criminalidade em Sorocaba aumentou em 20% no último mês...'
+            },
+            {
+                title: 'Operação policial prende traficantes',
+                description: 'Uma operação da polícia prendeu 15 traficantes no bairro...'
+            }
+        ];
+        return data;
     }
 
     // Função para exibir notícias em tempo real
@@ -94,6 +101,4 @@
     });
 </script>
 </body>
-</html>
-
 </html>
