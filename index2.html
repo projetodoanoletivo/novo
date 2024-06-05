@@ -50,11 +50,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 130px;
             transition: transform 0.3s, width 0.3s, height 0.3s;
             position: sticky;
             top: 0;
             z-index: 1;
+            background-color: #444347;
+            width: 100%;
+            height: 50vh; /* Tamanho inicial do vídeo */
         }
 
         .typing {
@@ -114,7 +116,7 @@
 </nav>
 
 <div class="video" id="video-container">
-    <video width="100%" height="50%" controls id="video">
+    <video width="100%" height="100%" controls id="video">
         <source src="videoplayback.mp4" type="video/mp4">
     </video>
 </div>
@@ -136,7 +138,6 @@
             var timer = setInterval(function() {
                 span.textContent += text[i];
                 i++;
-                window.scrollTo(0, document.body.scrollHeight); // Ajusta o scroll conforme o texto é digitado
                 if (i > text.length - 1) {
                     clearInterval(timer);
                 }
